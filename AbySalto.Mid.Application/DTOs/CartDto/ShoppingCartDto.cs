@@ -1,6 +1,6 @@
 ﻿using AbySalto.Mid.Domain.Entities;
 
-namespace AbySalto.Mid.Application.DTOs
+namespace AbySalto.Mid.Application.DTOs.CartDto
 {
     public class ShoppingCartDto
     {

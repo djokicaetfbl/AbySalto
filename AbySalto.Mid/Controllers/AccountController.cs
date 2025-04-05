@@ -1,4 +1,5 @@
 ﻿using AbySalto.Mid.Application.DTOs;
+using AbySalto.Mid.Application.DTOs.ApplicationUserDto;
 using AbySalto.Mid.Application.Interfaces;
 using AbySalto.Mid.Domain.Entities;
 using Microsoft.AspNetCore.Authorization;

@@ -1,4 +1,4 @@
-﻿using AbySalto.Mid.Application.DTOs;
+﻿using AbySalto.Mid.Application.DTOs.ProductDto;
 using AbySalto.Mid.Application.Interfaces;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;

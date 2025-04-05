@@ -7,11 +7,11 @@ namespace AbySalto.Mid.WebApi.Controllers
 {
     public class FavoriteController : ControllerBase
     {
-        private readonly IFavoriteService _favoriteService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public FavoriteController(IFavoriteService favoriteService)
+        public FavoriteController(IUnitOfWork unitOfWork)
         {
-            _favoriteService = favoriteService;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpPost("add-to-favorite/{productId}")]
@@ -19,7 +19,7 @@ namespace AbySalto.Mid.WebApi.Controllers
         public async Task<IActionResult> AddToFavorites(int productId)
         {
             var applicationUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result = await _favoriteService.AddToFavoritesAsync(int.Parse(applicationUserId), productId);
+            var result = await _unitOfWork.FavoriteService.AddToFavoritesAsync(int.Parse(applicationUserId), productId);
             if (result)
             {
                 return Ok("Product added to favorites.");

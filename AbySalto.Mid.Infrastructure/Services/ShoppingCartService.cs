@@ -1,4 +1,4 @@
-﻿using AbySalto.Mid.Application.DTOs;
+﻿using AbySalto.Mid.Application.DTOs.CartDto;
 using AbySalto.Mid.Application.Interfaces;
 using AbySalto.Mid.Domain.Entities;
 using AbySalto.Mid.Infrastructure.Context;

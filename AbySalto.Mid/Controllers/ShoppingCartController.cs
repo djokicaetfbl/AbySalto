@@ -1,4 +1,4 @@
-﻿using AbySalto.Mid.Application.DTOs;
+﻿using AbySalto.Mid.Application.DTOs.CartDto;
 using AbySalto.Mid.Application.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -8,18 +8,18 @@ namespace AbySalto.Mid.WebApi.Controllers
 {
     public class ShoppingCartController : ControllerBase
     {
-        private readonly IShoppingCartService _shoppingCartService;
+        private readonly IUnitOfWork _unitOfWork;
 
-        public ShoppingCartController(IShoppingCartService shoppingCartService)
+        public ShoppingCartController(IUnitOfWork unitOfWork)
         {
-            _shoppingCartService = shoppingCartService;
+            _unitOfWork = unitOfWork;
         }
 
         [HttpPost("add")]
         [Authorize]
         public async Task<IActionResult> AddToCart([FromBody] AddToCartRequestDto request)
         {
-            var cart = await _shoppingCartService.AddProductsToCartAsync(request);
+            var cart = await _unitOfWork.ShoppingCartService.AddProductsToCartAsync(request);
 
             if(cart == null)
             {
@@ -33,7 +33,7 @@ namespace AbySalto.Mid.WebApi.Controllers
         [Authorize]
         public async Task<IActionResult> DeleteCart(int cartId)
         {
-            var result = await _shoppingCartService.DeleteCartAsync(cartId);
+            var result = await _unitOfWork.ShoppingCartService.DeleteCartAsync(cartId);
             return result ? Ok() : BadRequest("Failed to delete cart");
         }
 
@@ -41,7 +41,7 @@ namespace AbySalto.Mid.WebApi.Controllers
         [Authorize]
         public async Task<IActionResult> GetCartByUser(int userId, int skip = 0, int limit = 1)
         {
-            var cart = await _shoppingCartService.GetCurrentCartAsync(userId, skip, limit);
+            var cart = await _unitOfWork.ShoppingCartService.GetCurrentCartAsync(userId, skip, limit);
             return cart != null ? Ok(cart) : NotFound("Cart not found");
         }
 
@@ -52,7 +52,7 @@ namespace AbySalto.Mid.WebApi.Controllers
         public async Task<IActionResult> AddToCart([FromQuery] int productId, [FromQuery] int quantity = 1)
         {
             var applicationUserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
-            var result = await _shoppingCartService.AddProductToShoppingCartAsyncDB(applicationUserId, productId, quantity);
+            var result = await _unitOfWork.ShoppingCartService.AddProductToShoppingCartAsyncDB(applicationUserId, productId, quantity);
             return result ? Ok() : BadRequest("Failed to add product to cart");
         }
 

@@ -31,6 +31,7 @@ namespace AbySalto.Mid.Infrastructure
             services.AddScoped<ITokenService, TokenService>();
             services.AddScoped<IFavoriteService, FavoriteService>();
             services.AddScoped<IShoppingCartService, ShoppingCartService>();
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
 
             return services;
         }

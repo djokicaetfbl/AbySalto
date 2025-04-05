@@ -1,6 +1,6 @@
-﻿namespace AbySalto.Mid.Application.DTOs
+﻿namespace AbySalto.Mid.Application.DTOs.ApplicationUserDto
 {
-    public class RegisterResponseDto
+    public class RegisterDto
     {
         public string Username { get; set; }
         public string Email { get; set; }
@@ -9,6 +9,5 @@
         public string LastName { get; set; }
         public string Gender { get; set; }
         public string Image { get; set; }
-        public string AccessToken { get; set; }
     }
 }

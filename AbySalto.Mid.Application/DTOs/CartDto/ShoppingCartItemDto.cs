@@ -1,4 +1,4 @@
-﻿namespace AbySalto.Mid.Application.DTOs
+﻿namespace AbySalto.Mid.Application.DTOs.CartDto
 {
     public class ShoppingCartItemDto
     {

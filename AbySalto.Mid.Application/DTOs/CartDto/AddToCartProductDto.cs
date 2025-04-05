@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System.Text.Json;
 
-namespace AbySalto.Mid.Application.DTOs
+namespace AbySalto.Mid.Application.DTOs.CartDto
 {
     public class AddToCartProductDto
     {

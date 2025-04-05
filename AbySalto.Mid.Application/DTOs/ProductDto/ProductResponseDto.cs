@@ -1,5 +1,4 @@
-﻿
-namespace AbySalto.Mid.Application.DTOs
+﻿namespace AbySalto.Mid.Application.DTOs.ProductDto
 {
     public class ProductResponseDto
     {

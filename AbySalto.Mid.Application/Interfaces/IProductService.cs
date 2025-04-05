@@ -1,4 +1,4 @@
-﻿using AbySalto.Mid.Application.DTOs;
+﻿using AbySalto.Mid.Application.DTOs.ProductDto;
 
 namespace AbySalto.Mid.Application.Interfaces
 {

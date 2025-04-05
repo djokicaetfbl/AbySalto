@@ -1,4 +1,4 @@
-﻿using AbySalto.Mid.Application.DTOs;
+﻿using AbySalto.Mid.Application.DTOs.CartDto;
 
 namespace AbySalto.Mid.Application.Interfaces
 {
