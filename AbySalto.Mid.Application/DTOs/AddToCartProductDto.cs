@@ -1,0 +1,14 @@
+﻿using Newtonsoft.Json;
+using System.Text.Json;
+
+namespace AbySalto.Mid.Application.DTOs
+{
+    public class AddToCartProductDto
+    {
+        [JsonProperty("id")]
+        public int Id { get; set; }
+
+        [JsonProperty("quantity")]
+        public int Quantity { get; set; }
+    }
+}

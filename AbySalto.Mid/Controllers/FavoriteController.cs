@@ -1,0 +1,30 @@
+﻿using AbySalto.Mid.Application.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
+namespace AbySalto.Mid.WebApi.Controllers
+{
+    public class FavoriteController : ControllerBase
+    {
+        private readonly IFavoriteService _favoriteService;
+
+        public FavoriteController(IFavoriteService favoriteService)
+        {
+            _favoriteService = favoriteService;
+        }
+
+        [HttpPost("add-to-favorite/{productId}")]
+        [Authorize]
+        public async Task<IActionResult> AddToFavorites(int productId)
+        {
+            var applicationUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var result = await _favoriteService.AddToFavoritesAsync(int.Parse(applicationUserId), productId);
+            if (result)
+            {
+                return Ok("Product added to favorites.");
+            }
+            return BadRequest("Failed to add product to favorites.");
+        }
+    }
+}

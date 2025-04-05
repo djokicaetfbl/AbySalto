@@ -29,6 +29,8 @@ namespace AbySalto.Mid.Infrastructure
             services.AddHttpClient<ProductService>();
             services.AddScoped<IProductService, ProductService>();
             services.AddScoped<ITokenService, TokenService>();
+            services.AddScoped<IFavoriteService, FavoriteService>();
+            services.AddScoped<IShoppingCartService, ShoppingCartService>();
 
             return services;
         }

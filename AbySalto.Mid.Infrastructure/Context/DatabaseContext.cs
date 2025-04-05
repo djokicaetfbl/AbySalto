@@ -14,7 +14,11 @@ namespace AbySalto.Mid.Infrastructure.Context
 
         #region DbSets
         public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-        
+        public DbSet<Product>  Products { get; set; }
+        public DbSet<Favorite> Favorites { get; set; }
+        public DbSet<ShoppingCart> ShoppingCarts { get; set; }
+        public DbSet<ShoppingCartItem> shoppingCartItems { get; set; }
+
         #endregion
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
