@@ -11,20 +11,38 @@
         >
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link link-body-emphasis px-2 active"
+        <a
+          routerLink="/products"
+          routerLinkActive="active"
+          class="nav-link link-body-emphasis px-2 active"
           >Proizvodi</a
         >
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link link-body-emphasis px-2 active">Pitanja</a>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          class="nav-link link-body-emphasis px-2 active"
+          >Pitanja</a
+        >
       </li>
       <li class="nav-item">
-        <a href="#" class="nav-link link-body-emphasis px-2 active">Kontak</a>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          class="nav-link link-body-emphasis px-2 active"
+          >Kontakt</a
+        >
       </li>
     </ul>
     <ul class="nav">
       <li class="nav-item">
-        <a href="#" class="nav-link link-body-emphasis px-2 active">Košarica</a>
+        <a
+          routerLink="/"
+          routerLinkActive="active"
+          class="nav-link link-body-emphasis px-2 active"
+          >Košarica</a
+        >
       </li>
 
       @if (!accountService.currentUser()) {

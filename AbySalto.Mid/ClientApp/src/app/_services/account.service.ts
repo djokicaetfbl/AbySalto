@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { User } from '../_models/user';
-import { BehaviorSubject, map, Observable } from 'rxjs';
+import { map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -35,6 +35,7 @@ export class AccountService {
   }
 
   me() {
+    // example without jwt interceptor
     const token = this.getCurrentUser()?.accessToken;
     if (!token) throw new Error('User is not authenticated');
     const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);

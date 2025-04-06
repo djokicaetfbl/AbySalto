@@ -1,0 +1,46 @@
+<div class="modal-header">
+  <h4 class="modal-title" id="modal-title">Datalji o proizvodu</h4>
+  <button
+    type="button"
+    class="btn-close"
+    aria-label="Close"
+    (click)="activeModal.dismiss()"
+  ></button>
+</div>
+<div class="modal-body">
+  <div *ngIf="product">
+    <h5>{{ product?.title }}</h5>
+    <p>{{ product?.description }}</p>
+    <p><strong>Cijena:</strong> {{ product?.price }}</p>
+    <p><strong>Kategorija:</strong> {{ product?.category }}</p>
+    <p><strong>Na stanju:</strong> {{ product?.stock }}</p>
+    <img
+      [src]="product?.thumbnail"
+      alt="{{ product?.title }}"
+      class="img-fluid"
+    />
+    <div class="mt-2">
+      <strong>Oznake:</strong>
+      <ul>
+        <li *ngFor="let tag of product.tags">{{ tag }}</li>
+      </ul>
+    </div>
+    <div class="mt-2">
+      <strong>Dimenzije:</strong>
+      <ul>
+        <li>{{ product?.dimensions?.height }}</li>
+        <li>{{ product?.dimensions?.width }}</li>
+        <li>{{ product?.dimensions?.length }}</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="modal-footer">
+  <button
+    type="button"
+    class="btn btn-secondary"
+    (click)="activeModal.dismiss()"
+  >
+    Zatvori
+  </button>
+</div>

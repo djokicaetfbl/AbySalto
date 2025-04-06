@@ -1,1 +1,45 @@
-<p>products works!</p>
+<h2>Proizvodi</h2>
+<div>
+  <div class="row">
+    <div class="col-md-4" *ngFor="let product of products">
+      <div class="card mb-3">
+        <img
+          [src]="product.thumbnail"
+          class="card-img-top"
+          alt="{{ product.title }}"
+        />
+        <button
+          class="btn btn-outline-warning btn-small"
+          (click)="addToFavorites(product.id)"
+          title="Add to favorites"
+        >
+          <i class="fa fa-star">Omiljeno</i>
+        </button>
+        <div class="card-body">
+          <h5 class="card-title">{{ product.title }}</h5>
+          <p class="card-text">{{ product.description }}</p>
+          <p class="card-text">
+            <strong>Cijena: </strong>{{ product.price | currency }}
+          </p>
+          <p class="card-text">
+            <strong>Kategorija: </strong>{{ product.category }}
+          </p>
+          <button
+            class="btn btn-primary"
+            (click)="openProductDetail(product.id)"
+          >
+            Detaljno
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button
+    *ngIf="products.length > 0"
+    (click)="loadMore()"
+    class="btn btn-primary"
+  >
+    Učitaj više
+  </button>
+</div>

@@ -5,6 +5,7 @@ using System.Security.Claims;
 
 namespace AbySalto.Mid.WebApi.Controllers
 {
+    [Route("api/favorite")]
     public class FavoriteController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;

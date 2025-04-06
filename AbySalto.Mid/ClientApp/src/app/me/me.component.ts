@@ -20,7 +20,6 @@ export class MeComponent implements OnInit {
     this.accountService.me().subscribe({
       next: (user) => {
         this.user = user;
-        console.log('User data fetched successfully', user);
       },
       error: (error) => {
         console.error('Error fetching user data', error);
