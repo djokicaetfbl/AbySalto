@@ -1,0 +1,153 @@
+<div class="modal-header">
+  <h5 class="modal-title" id="exampleModalLabel">Registracija</h5>
+  <button
+    type="button"
+    class="btn-close"
+    data-bs-dismiss="modal"
+    aria-label="Close"
+  ></button>
+</div>
+<div class="modal-body">
+  <form [formGroup]="registerForm" (ngSubmit)="register()">
+    <div class="mb-3">
+      <label for="username" class="form-label">Korisničko ime</label>
+      <input
+        id="username"
+        formControlName="username"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="
+          formControls['username'].touched && formControls['username'].invalid
+        "
+      />
+      <div
+        *ngIf="
+          formControls['username'].invalid && formControls['username'];
+          touched
+        "
+        class="invalid-feedback"
+      >
+        Korisničko ime mora da ima bar tri karaktera.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input
+        id="email"
+        formControlName="email"
+        type="email"
+        class="form-control"
+        [class.is-invalid]="
+          formControls['email'].touched && formControls['email'].invalid
+        "
+      />
+      <div
+        *ngIf="formControls['email'].invalid && formControls['email'].touched"
+        class="invalid-feedback"
+      >
+        Unesite validan email.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="password" class="form-label">Lozinka</label>
+      <input
+        id="password"
+        formControlName="password"
+        type="password"
+        class="form-control"
+        [class.is-invalid]="
+          formControls['password'].touched && formControls['password'].invalid
+        "
+      />
+      <div
+        *ngIf="
+          formControls['password'].invalid && formControls['password'].touched
+        "
+        class="invalid-feedback"
+      >
+        Lozinka zahtjeva bar 6 karaktera.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="confirmPassword" class="form-label">Potvrdite lozinku</label>
+      <input
+        id="confirmPassword"
+        formControlName="confirmPassword"
+        type="password"
+        class="form-control"
+        [class.is-invalid]="
+          formControls['confirmPassword'].touched &&
+          formControls['confirmPassword'].invalid
+        "
+      />
+      <div
+        *ngIf="
+          formControls['confirmPassword'].invalid &&
+          formControls['confirmPassword'].touched
+        "
+        class="invalid-feedback"
+      >
+        Lozinka i potvrđena lozinka moraju da se podudaraju.
+      </div>
+    </div>
+
+    <div *ngIf="registerForm.errors?.['passwordMismatch']" class="text-danger">
+      Lozinke se ne podudaraju!
+    </div>
+
+    <div class="mb-3">
+      <label for="firstName" class="form-label">Ime</label>
+      <input
+        id="firstName"
+        formControlName="firstName"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="
+          formControls['firstName'].touched && formControls['firstName'].invalid
+        "
+      />
+      <div
+        *ngIf="
+          formControls['firstName'].invalid && formControls['firstName'];
+          touched
+        "
+        class="invalid-feedback"
+      >
+        Ime mora da sadrži bar tri karaktera.
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label for="lastName" class="form-label">Prezime</label>
+      <input
+        id="lastName"
+        formControlName="lastName"
+        type="text"
+        class="form-control"
+        [class.is-invalid]="
+          formControls['lastName'].touched && formControls['lastName'].invalid
+        "
+      />
+      <div
+        *ngIf="
+          formControls['lastName'].invalid && formControls['lastName'];
+          touched
+        "
+        class="invalid-feedback"
+      >
+        Prezime mora da sadrži bar tri karaktera.
+      </div>
+    </div>
+
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="registerForm.invalid"
+    >
+      Register
+    </button>
+  </form>
+</div>
