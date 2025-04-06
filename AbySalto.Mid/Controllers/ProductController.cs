@@ -34,5 +34,17 @@ namespace AbySalto.Mid.Controllers
             }
             return Ok(product);
         }
+
+        
+        [HttpGet("db")]
+        public async Task<IActionResult> GetProductsDB(int skip = 0, int limit = 30, string sortBy = "title", bool descending = false)
+        {
+            var products = await _unitOfWork.ProductService.GetProductsAsyncDB(skip, limit, sortBy, descending);
+            if (products == null)
+            {
+                return NotFound();
+            }
+            return Ok(products);
+        }
     }
 }

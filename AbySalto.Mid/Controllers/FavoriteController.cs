@@ -20,7 +20,7 @@ namespace AbySalto.Mid.WebApi.Controllers
         public async Task<IActionResult> AddToFavorites(int productId)
         {
             var applicationUserId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var result = await _unitOfWork.FavoriteService.AddToFavoritesAsync(int.Parse(applicationUserId), productId);
+            var result = await _unitOfWork.FavoriteService.AddToFavoritesAsync(int.Parse(applicationUserId), 1/*productId*/);
             if (result)
             {
                 return Ok("Product added to favorites.");

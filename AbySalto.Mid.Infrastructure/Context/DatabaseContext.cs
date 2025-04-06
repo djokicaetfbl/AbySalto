@@ -36,6 +36,18 @@ namespace AbySalto.Mid.Infrastructure.Context
                 .WithOne(e => e.Role)
                 .HasForeignKey(e => e.RoleId)
                 .IsRequired();
+
+            modelBuilder.Entity<Product>()
+                .HasIndex(p => p.Title)
+                .HasDatabaseName("Idx_Title");
+
+            modelBuilder.Entity<Product>()
+                .HasIndex(p => p.Price)
+                .HasDatabaseName("Idx_Price");
+
+            modelBuilder.Entity<Product>()
+                .HasIndex(p => p.Rating)
+                .HasDatabaseName("Idx_Rating");
         }
     }
 }

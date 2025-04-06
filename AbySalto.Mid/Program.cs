@@ -17,8 +17,9 @@ using AbySalto.Mid.Infrastructure.Seed;
     var app = builder.Build();
 
     await RoleSeeder.SeedRolesAsync(app.Services);
+    await ProductSeed.SeedProductsAsync(app.Services);
 
-    if (app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
     {
         app.MapOpenApi();
         app.UseSwagger();
