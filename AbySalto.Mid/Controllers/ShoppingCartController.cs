@@ -6,6 +6,7 @@ using System.Security.Claims;
 
 namespace AbySalto.Mid.WebApi.Controllers
 {
+    [Route("api/shoppingCart")]
     public class ShoppingCartController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -19,6 +20,7 @@ namespace AbySalto.Mid.WebApi.Controllers
         [Authorize]
         public async Task<IActionResult> AddToCart([FromBody] AddToCartRequestDto request)
         {
+            request.UserId = int.Parse(User.FindFirstValue(ClaimTypes.NameIdentifier)!);
             var cart = await _unitOfWork.ShoppingCartService.AddProductsToCartAsync(request);
 
             if(cart == null)

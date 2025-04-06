@@ -3,6 +3,7 @@ import { inject, Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment';
 import { User } from '../_models/user';
 import { map } from 'rxjs';
+import { ProductService } from './product.service';
 
 @Injectable({
   providedIn: 'root',
@@ -11,6 +12,7 @@ export class AccountService {
   private http = inject(HttpClient);
   baseUrl = environment.apiUrl;
   currentUser = signal<User | null>(null);
+  private productService = inject(ProductService);
 
   login(model: any) {
     return this.http.post<User>(this.baseUrl + 'accounts/login', model).pipe(
@@ -67,6 +69,7 @@ export class AccountService {
   }
 
   logout() {
+    this.productService.clearCache();
     localStorage.removeItem('user');
     this.currentUser.set(null);
   }

@@ -25,4 +25,5 @@ export interface ProductDto {
   meta: ProductMetaDto;
   thumbnail: string;
   images: string[];
+  quantity: number;
 }

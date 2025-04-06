@@ -1,0 +1,33 @@
+<div *ngIf="cart">
+  <h2>Moja košarica</h2>
+  @if(cart.carts.length > 0) {
+  <div>
+    <div *ngFor="let item of cart.carts">
+      <div class="cart-item">
+        <img
+          [src]="item.thumbnail"
+          alt="{{ item.title }}"
+          class="cart-item-img"
+        />
+        <div class="cart-item-details">
+          <h5>{{ item.title }}</h5>
+          <p>Cijena: {{ item.price }}</p>
+          <p>Količina: {{ item.quantity }}</p>
+          <p>Ukupno: {{ item.total }}</p>
+        </div>
+      </div>
+    </div>
+    <button
+      *ngIf="cart.carts.length < cart.total"
+      (click)="loadMore()"
+      class="btn btn-primary"
+    >
+      Učitaj više
+    </button>
+  </div>
+  } @else {
+  <div *ngIf="cart.carts.length === 0">
+    <p>Vaša košarica je prazna.</p>
+  </div>
+  }
+</div>

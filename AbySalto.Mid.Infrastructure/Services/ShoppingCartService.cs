@@ -13,6 +13,7 @@ namespace AbySalto.Mid.Infrastructure.Services
         private readonly DatabaseContext _context;
         private readonly HttpClient _httpClient;
         private readonly ILogger<ShoppingCartService> _logger;
+        private readonly static string url = "https://dummyjson.com/carts/";
 
         public ShoppingCartService(DatabaseContext context, HttpClient httpClient, ILogger<ShoppingCartService> logger)
         {
@@ -28,7 +29,7 @@ namespace AbySalto.Mid.Infrastructure.Services
                 var json = JsonConvert.SerializeObject(request);
                 var content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
 
-                var response = _httpClient.PostAsync("https://dummyjson.com/carts/add", content).Result;
+                var response = _httpClient.PostAsync($"{url}add", content).Result;
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -52,7 +53,7 @@ namespace AbySalto.Mid.Infrastructure.Services
         {
             try
             {
-                var response = await _httpClient.DeleteAsync($"https://dummyjson.com/carts/{cartId}");
+                var response = await _httpClient.DeleteAsync($"{url}{cartId}");
 
                 if (!response.IsSuccessStatusCode)
                 {
@@ -73,7 +74,7 @@ namespace AbySalto.Mid.Infrastructure.Services
         {
             try
             {
-                var response = await _httpClient.GetAsync($"https://dummyjson.com/carts/user/{userId}?skip={skip}&limit={limit}");
+                var response = await _httpClient.GetAsync($"{url}user/{userId}?skip={skip}&limit={limit}");
 
                 if (!response.IsSuccessStatusCode)
                 {
