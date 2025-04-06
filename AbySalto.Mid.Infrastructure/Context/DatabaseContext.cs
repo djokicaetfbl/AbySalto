@@ -17,7 +17,7 @@ namespace AbySalto.Mid.Infrastructure.Context
         public DbSet<Product>  Products { get; set; }
         public DbSet<Favorite> Favorites { get; set; }
         public DbSet<ShoppingCart> ShoppingCarts { get; set; }
-        public DbSet<ShoppingCartItem> shoppingCartItems { get; set; }
+        public DbSet<ShoppingCartItem> ShoppingCartItems { get; set; }
 
         #endregion
 
